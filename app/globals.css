@@ -1,0 +1,97 @@
+@import 'tailwindcss';
+
+@theme inline {
+  --color-ink: #0d0d0f;
+  --color-paper: #ffffff;
+  --color-soft: #f5f5f2;
+  --color-line: #e6e6e3;
+  --color-muted: #55585e;
+  --color-faint: #c9c9c4;
+
+  --color-coral: #ff5b3a;
+  --color-sun: #ffc400;
+  --color-blue: #2d5bff;
+  --color-mint: #12c48b;
+  --color-pink: #ff4fa3;
+  --color-violet: #8b5cf6;
+
+  --font-sans: var(--font-geist-sans), system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --font-display: 'Bricolage Grotesque Variable', 'Bricolage Grotesque', system-ui, sans-serif;
+}
+
+html {
+  scroll-padding-top: 88px;
+  color-scheme: light;
+}
+
+body {
+  background: #fff;
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+
+::selection {
+  background: var(--color-sun);
+  color: var(--color-ink);
+}
+
+/* Type */
+.display {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.045em;
+  line-height: 0.92;
+}
+.mono-label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.h-section { font-size: clamp(2.8rem, 1rem + 6vw, 5rem); }
+.h-giant { font-size: clamp(3.6rem, 0.8rem + 12vw, 8rem); }
+
+/* The look: thick ink outline + hard shadow */
+.pop { border: 3px solid var(--color-ink); }
+.pop-card { border: 3px solid var(--color-ink); box-shadow: 8px 8px 0 var(--color-ink); }
+.pop-sm { border: 2px solid var(--color-ink); box-shadow: 4px 4px 0 var(--color-ink); }
+.pill { border: 2px solid var(--color-ink); border-radius: 999px; }
+
+@media (max-width: 640px) {
+  .pop-card { box-shadow: 5px 5px 0 var(--color-ink); }
+}
+
+/* Entrance used on the first screen: waits for the loader */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: none; }
+}
+.rise {
+  animation: rise 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  animation-delay: calc(var(--intro, 0s) + var(--d, 0s));
+}
+
+@keyframes bob {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -8px; }
+}
+.bob { animation: bob 3.2s ease-in-out infinite; animation-delay: var(--d, 0s); }
+
+@keyframes wiggle {
+  0%, 100% { rotate: var(--r, 0deg); }
+  50% { rotate: calc(var(--r, 0deg) + 4deg); }
+}
+.wiggle { animation: wiggle 4s ease-in-out infinite; animation-delay: var(--d, 0s); }
+
+.no-scrollbar { scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+
+/* Hover: underline that wipes */
+.u-link {
+  background: linear-gradient(currentColor, currentColor) 0 100% / 100% 3px no-repeat;
+  transition: background-size 0.3s ease;
+}
+.u-link:hover { background-size: 0 3px; }
