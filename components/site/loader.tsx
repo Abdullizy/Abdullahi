@@ -11,6 +11,9 @@ export function Loader() {
 
   React.useEffect(() => {
     const root = document.documentElement
+    // every reload starts from the top, so the loader always leads into the door
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual'
+    window.scrollTo(0, 0)
     root.style.overflow = 'hidden'
     const start = performance.now()
     const dur = 1500

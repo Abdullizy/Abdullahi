@@ -7,6 +7,7 @@ import { site } from '@/lib/data'
 import { Header } from '@/components/site/header'
 import { Footer } from '@/components/site/footer'
 import { Cursor } from '@/components/site/cursor'
+import { Loader } from '@/components/site/loader'
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -21,6 +22,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable}`}>
       <body>
+        <Loader />
         <Header />
         <main>{children}</main>
         <Footer />

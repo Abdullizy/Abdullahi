@@ -1,4 +1,3 @@
-import { Loader } from '@/components/site/loader'
 import { DoorHero } from '@/components/site/door-hero'
 import { Ribbons } from '@/components/site/ribbons'
 import { Services } from '@/components/site/services'
@@ -12,7 +11,6 @@ export default function Home() {
   return (
     // --intro: how long the loader takes, so the first screen waits for it
     <div style={{ ['--intro' as string]: '2.1s' }}>
-      <Loader />
       <DoorHero />
       <Ribbons />
       <Services />
